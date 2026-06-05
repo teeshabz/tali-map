@@ -108,6 +108,10 @@
           <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg></div>
           <span class="f-name">Coffee</span><div class="toggle" id="t-coffee"></div>
         </div>
+        <div class="f-row" onclick="toggleFilter('drinks')">
+          <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M8 22h8M12 11v11M5 3H3l2 7h14l2-7h-2M5 3h14"/></svg></div>
+          <span class="f-name">Drinks</span><div class="toggle" id="t-drinks"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -126,6 +130,7 @@ const ICONS = {
   ski:`<svg viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/><path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"/></svg>`,
   park:`<svg viewBox="0 0 24 24"><path d="M17 14c.83-1.333 1-2.165 1-3a6 6 0 0 0-12 0c0 .835.17 1.667 1 3l4 7 4-7Z"/><path d="M9.17 14a6 6 0 0 1 5.66 0"/></svg>`,
   'motorbike loop':`<svg viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>`,
+  drinks:`<svg viewBox="0 0 24 24"><path d="M8 22h8M12 11v11M5 3H3l2 7h14l2-7h-2M5 3h14"/></svg>`,
 };
 
 function getIcon(cat,subtag){return ICONS[subtag]||ICONS[cat]||ICONS.food;}
@@ -146,9 +151,9 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
 }).addTo(map);
 
 const layers={};
-const active={museum:true,dancing:true,nature:true,food:true,coffee:true};
+const active={museum:true,dancing:true,nature:true,food:true,coffee:true,drinks:true};
 function mkGroup(){return L.markerClusterGroup({iconCreateFunction:c=>L.divIcon({html:`<div class="tcluster">${c.getChildCount()}</div>`,className:'',iconSize:[40,40]}),maxClusterRadius:50,showCoverageOnHover:false,zoomToBoundsOnClick:true,spiderfyOnMaxZoom:true});}
-['museum','dancing','nature','food','coffee'].forEach(cat=>{layers[cat]=mkGroup();map.addLayer(layers[cat]);});
+['museum','dancing','nature','food','coffee','drinks'].forEach(cat=>{layers[cat]=mkGroup();map.addLayer(layers[cat]);});
 
 async function loadPins(){
   try {
