@@ -72,6 +72,25 @@ export default async function handler(req, res) {
       'Craftsbury':                    [44.6444, -72.3706],
       'Prospect Park':                 [40.6602, -73.9690],
       'Hà Giang Loop':                 [22.8026, 104.9784],
+      // Berlin
+      'Tischendorf':                   [52.4920,  13.4282],
+      'Tempelhofer Feld':              [52.4739,  13.4007],
+      // Paris
+      'Crow Coffee':                   [48.8694,   2.3613],
+      // NYC — new
+      'Strong Rope Brewery':           [40.6743, -74.0078],
+      "Dolly's":                       [40.7197, -73.9636],
+      'Salty Lunch Lady':              [40.7005, -73.9059],
+      'Rhodora':                       [40.6894, -73.9742],
+      'Sailor':                        [40.6893, -73.9703],
+      'Fort Greene Park':              [40.6897, -73.9739],
+      'No Won':                        [40.7037, -73.9262],
+      'Hotel Delmano':                 [40.7183, -73.9572],
+      // Cambridge MA
+      'La Saison Bakery':              [42.3879, -71.1367],
+      'Forage':                        [42.3721, -71.1233],
+      "Felipe's":                      [42.3733, -71.1216],
+      'Hi-Rise Bakery':                [42.3748, -71.1283],
     };
 
     const pins = allResults
