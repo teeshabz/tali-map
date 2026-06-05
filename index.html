@@ -143,11 +143,11 @@ function popupHtml(p){
   return `<div class="pop-header"><div class="pop-icon">${icon}</div><div><div class="pop-name">${p.name}</div><div class="pop-tag">${tag}</div></div><span class="pop-x">×</span></div><div class="pop-body"><div class="pop-why">${p.why}</div>${mapsLink}</div>`;
 }
 
-const map=L.map('map',{zoomControl:false}).setView([20,10],2);
+const map=L.map('map',{zoomControl:false,minZoom:2,maxBounds:[[-90,-180],[90,180]],maxBoundsViscosity:1.0}).setView([20,10],2);
 L.control.zoom({position:'bottomright'}).addTo(map);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
   attribution:'&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-  subdomains:'abcd',maxZoom:19
+  subdomains:'abcd',maxZoom:19,noWrap:true
 }).addTo(map);
 
 const layers={};
