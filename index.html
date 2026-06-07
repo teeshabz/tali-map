@@ -138,16 +138,15 @@ function pinIcon(cat,subtag){return L.divIcon({className:'',html:`<div class="tp
 function popupHtml(p){
   const icon=getIcon(p.category,p.subtag);
   const tag=[p.category,p.subtag].filter(Boolean).join(' · ');
-  const mapsUrl=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' '+p.city)}`;
-  const mapsLink=p.hasMaps?`<a class="pop-maps" href="${mapsUrl}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>View on Google Maps →</a>`:'';
+  const mapsLink=p.mapsUrl?`<a class="pop-maps" href="${p.mapsUrl}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>View on Google Maps →</a>`:(p.hasMaps?`<a class="pop-maps" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' '+p.city)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>View on Google Maps →</a>`:'')
   return `<div class="pop-header"><div class="pop-icon">${icon}</div><div><div class="pop-name">${p.name}</div><div class="pop-tag">${tag}</div></div><span class="pop-x">×</span></div><div class="pop-body"><div class="pop-why">${p.why}</div>${mapsLink}</div>`;
 }
 
-const map=L.map('map',{zoomControl:false,minZoom:2,maxBounds:[[-90,-180],[90,180]],maxBoundsViscosity:1.0}).setView([20,10],2);
+const map=L.map('map',{zoomControl:false}).setView([20,10],2);
 L.control.zoom({position:'bottomright'}).addTo(map);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
   attribution:'&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-  subdomains:'abcd',maxZoom:19,noWrap:true
+  subdomains:'abcd',maxZoom:19
 }).addTo(map);
 
 const layers={};
